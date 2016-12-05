@@ -88,9 +88,8 @@
  ;; If there is more than one, they won't work right.
  '(haskell-mode-hook
    (quote
-					;    (interactive-haskell-mode turn-on-haskell-indent turn-on-subword-mode turn-on-haskell-decl-scan my-haskell-mode-hook)))
         (interactive-haskell-mode turn-on-subword-mode turn-on-haskell-decl-scan my-haskell-mode-hook)))
- '(haskell-process-type (quote cabal-repl))
+ '(haskell-process-type (quote stack-ghci))
  '(package-selected-packages
    (quote
     (flymake-haskell-multi haskell-mode restclient rainbow-delimiters js2-mode jq-mode helm-swoop dired+ cyberpunk-theme))))
