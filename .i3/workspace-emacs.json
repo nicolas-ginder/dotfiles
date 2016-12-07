@@ -1,0 +1,23 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "fullscreen_mode": 1,
+    "geometry": {
+       "height": 602,
+       "width": 752,
+       "x": 0,
+       "y": 0
+    },
+    "name": "emacs@cocobang",
+    "percent": 1,
+    "swallows": [
+       {
+       "class": "^Emacs$"
+
+       }
+    ],
+    "type": "con"
+}
+
