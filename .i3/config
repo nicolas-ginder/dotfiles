@@ -155,11 +155,6 @@ bar {
         status_command i3status
 }
 
-
-exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-web.json'"
-exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-term.json'"
-exec --no-startup-id "i3-msg 'workspace 3; append_layout ~/.i3/workspace-emacs.json'"
-
 exec --no-startup-id "VBoxClient-all"
 
 exec --no-startup-id "feh --bg-scale /usr/share/archlinux/wallpaper/archlinux-simplyblack.png"
@@ -168,10 +163,25 @@ exec --no-startup-id "nm-applet"
 
 exec --no-startup-id "xset r rate 250 50"
 
+
+workspace 1 output VGA-1
+exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-web.json'"
+exec --no-startup-id "chromium"
+
+workspace 2 output VGA-1
+exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-term.json'"
+exec --no-startup-id "lxterminal"
 exec --no-startup-id "lxterminal"
 
-exec --no-startup-id "lxterminal"
-
+workspace 3 output VGA-1
+exec --no-startup-id "i3-msg 'workspace 3; append_layout ~/.i3/workspace-emacs.json'"
 exec "emacsclient -c -a ''"
 
+workspace 4 output VGA-1
+
+workspace 5 output VGA-2
+exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.i3/workspace-web.json'"
 exec --no-startup-id "chromium"
+
+
+
