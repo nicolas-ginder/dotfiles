@@ -158,7 +158,8 @@ txtrst='\e[0m'    # Text Reset
 txtcyn='\e[0;36m' # Cyan
 txtpur='\e[0;35m' # Violet
 
-cqlsh() { docker run -it --rm cassandra:2.0 cqlsh $1;}
+cqlsh() { docker run --net=host -it --rm cassandra:3.0 cqlsh "$@";}
+nodetool() { docker run --net=host -it --rm cassandra:2.1 nodetool "$@";}
 
 functions()
 {
