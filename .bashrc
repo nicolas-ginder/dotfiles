@@ -44,7 +44,7 @@ RESET_FORMATTING=`tput sgr0`
 export TERM=xterm-256color
 
 # After each command, save and reload history
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -a; history -c; history -r $PROMPT_COMMAND"
 
 
 # append to the history file, don't overwrite it
@@ -126,7 +126,7 @@ alias trash="rm -fr ~/.local/share/Trash"
 alias ls='ls --color=auto'
 alias less='less -W'
 alias xmllint='xmllint --format'
-alias ll='ls -l --group-directories-first'
+alias ll='ls -lth --group-directories-first'
 alias mkdir='mkdir -p'
 alias cp="cp -v"
 alias grep='grep -iI --color=tty'
