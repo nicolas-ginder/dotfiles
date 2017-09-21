@@ -45,7 +45,7 @@ export TERM=xterm-256color
 
 # After each command, save and reload history
 #export PROMPT_COMMAND="history -a; history -c; history -r $PROMPT_COMMAND"
-
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -55,7 +55,8 @@ export HISTSIZE=100000
 export HISTFILESIZE=200000
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-export HISTCONTROL=ignoreboth:ignoredups
+#export HISTCONTROL=ignoreboth:ignoredups
+export HISTCONTROL=ignoredups:erasedups
 #export HISTIGNORE=l:ls:ps:cd:exit
 
 
@@ -97,7 +98,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 source /usr/share/git/completion/git-completion.bash
 source /usr/share/git/completion/git-prompt.sh
-export PS1='\[\e[0;32m\e[m$(tput setaf 3)\]\u@\h:\[$(tput sgr0)$(tput setaf 6)\]\w\[$(tput sgr0)$(tput setaf 2)\] $(__git_ps1 "[%s]") \[$(tput sgr0)\]$ '
+export PS1='\[\e[0;32m\e[m$(tput setaf 3)\]\u@\h:\[$(tput sgr0)$(tput setaf 6)\]\w\[$(tput sgr0)$(tput setaf 2)\]$(__git_ps1 "[%s]")\[$(tput sgr0)\]\n$'
 
 
 up(){
@@ -135,7 +136,7 @@ alias ports="lsof -i -n -P"
 #alias ps='ps auxfwww'
 alias ping='ping -c 10'
 alias openports='netstat -nape --inet'
-alias ssh-keygen='ssh-keygen -Rv'
+#alias ssh-keygen='ssh-keygen -Rv'
 alias more=less
 alias nuke='kill -9'
 alias latest='ls -Art | tail -n 1'
@@ -542,3 +543,4 @@ mvn-color()
 # Override the mvn command with the colorized one.
 alias mvn="mvn-color"
 
+source /usr/share/nvm/init-nvm.sh
