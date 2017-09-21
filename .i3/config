@@ -9,11 +9,16 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+#font fixed:pixelsize
+font pango:monospace 5
+
+
+#font "Ubuntu Condensed:Regular 8"
+#font "Source Code Pro:Regular 8"
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -77,7 +82,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -152,38 +157,42 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+       status_command i3blocks -c ~/.i3blocks/config
 }
+
+#exec_always --no-startup-id killall polybar; polybar example
 
 focus_follows_mouse no
 
-exec --no-startup-id "VBoxClient-all"
+workspace 1 output Virtual1
+workspace 2 output Virtual1
+workspace 3 output Virtual1
+workspace 4 output Virtual1
 
-exec --no-startup-id "feh --bg-scale /usr/share/archlinux/wallpaper/archlinux-simplyblack.png"
+workspace 5 output Virtual3
+workspace 6 output Virtual3
+workspace 7 output Virtual3
 
-exec --no-startup-id "nm-applet"
+workspace 8 output Virtual2
+workspace 9 output Virtual2
 
-exec --no-startup-id "xset r rate 250 50"
+#workspace 2 output VGA-1
+
+exec --no-startup-id vmware-user-suid-wrapper
+exec --no-startup-id setxkbmap -layout gb
 
 
-workspace 1 output VGA-1
-exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-web.json'"
-exec --no-startup-id "chromium"
-
-workspace 2 output VGA-1
-exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-term.json'"
+exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-term.json'"
 exec --no-startup-id "lxterminal"
-exec --no-startup-id "lxterminal"
 
-workspace 3 output VGA-1
-exec --no-startup-id "i3-msg 'workspace 3; append_layout ~/.i3/workspace-emacs.json'"
+
+
+exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-emacs.json'"
 exec "emacsclient -c -a ''"
-
-workspace 4 output VGA-1
-
-workspace 5 output VGA-2
-exec --no-startup-id "i3-msg 'workspace 5; append_layout ~/.i3/workspace-web.json'"
-exec --no-startup-id "chromium"
-
+#exec --no-startup-id nm-applet
+exec --no-startup-id dropbox-cli start
+#exec --no-startup-id ~/.fehbg
+exec --no-startup-id "sh -c 'sleep 30; ~/.fehbg'"
+#workspace 5 output VGA-2
 
 

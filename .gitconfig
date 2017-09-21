@@ -1,6 +1,6 @@
 [user]
     name = Nicolas Ginder
-    email = nicolas-ginder@users.noreply.github.com
+    email = x@x.com
 
 [color]
     diff = auto
@@ -22,14 +22,23 @@
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     unstash = !git stash show -p | git apply -R
     meld = difftool -y -t meld
+    kdiff = difftool -y -t kdiff3
     amend = commit --amend --no-edit
     aliases = config --get-regexp alias
     df = diff
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
+    localprune= "! git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d"
+    logdiff = log -p --stat
 
 [push]
     default = upstream
+    
 [merge]
-	tool = meld
+    tool = kdiff3
+	
+
+
+[fetch]
+	prune = true
