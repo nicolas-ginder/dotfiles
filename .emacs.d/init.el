@@ -28,6 +28,10 @@
 (tool-bar-mode -1)
 (load-theme 'cyberpunk 1)
 
+;;font
+(add-to-list 'default-frame-alist '(font . "InputMono-10" ))
+(set-face-attribute 'default t :font "InputMono-10" )
+
 ;; javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
@@ -60,7 +64,7 @@
 
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
-(require 'flymake-haskell-multi)
+;(require 'flymake-haskell-multi)
 
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
@@ -88,11 +92,11 @@
  ;; If there is more than one, they won't work right.
  '(haskell-mode-hook
    (quote
-        (interactive-haskell-mode turn-on-subword-mode turn-on-haskell-decl-scan my-haskell-mode-hook)))
+    (interactive-haskell-mode turn-on-subword-mode turn-on-haskell-decl-scan my-haskell-mode-hook)))
  '(haskell-process-type (quote stack-ghci))
  '(package-selected-packages
    (quote
-    (flymake-haskell-multi haskell-mode restclient rainbow-delimiters js2-mode jq-mode helm-swoop dired+ cyberpunk-theme))))
+    (groovy-mode helm-git-grep flymake-haskell-multi haskell-mode restclient rainbow-delimiters js2-mode jq-mode helm-swoop dired+ cyberpunk-theme))))
 
 
 (custom-set-faces
